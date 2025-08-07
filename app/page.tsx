@@ -32,7 +32,7 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel
 } from '@/components/ui/sidebar'
-import { SidebarMenuButtonWrapper } from '@/components/sidebar-menu-button-wrapper' // Importar el nuevo componente
+import { SidebarMenuButtonWrapper } from '@/components/sidebar-menu-button-wrapper'
 
 export default function InventoryApp() {
   // Hooks de datos
@@ -76,9 +76,6 @@ export default function InventoryApp() {
     createBalanceTransfer,
     refetch: refetchBalanceTransfers
   } = useBalanceTransfers()
-
-  // Eliminar la llamada a useSidebar aquí, se moverá al wrapper
-  // const { isMobile, setOpenMobile } = useSidebar()
 
   // Verificar si hay errores de conexión
   const hasConnectionErrors = productsError || salesError || cashError || transfersError
@@ -337,9 +334,9 @@ export default function InventoryApp() {
   }
 
   return (
-    <SidebarProvider defaultOpen={true}> {/* Sidebar abierto por defecto en desktop */}
-      <Sidebar collapsible="icon"> {/* Collapsible a icono en desktop, offcanvas en mobile */}
-        <SidebarHeader className="p-4">
+    <SidebarProvider defaultOpen={true}>
+      <Sidebar collapsible="icon" className="!bg-white border-r border-veggie-200 shadow-lg">
+        <SidebarHeader className="p-4 !bg-white border-b border-veggie-100">
           <div className="flex items-center gap-2">
             <div className="p-2 bg-gradient-to-r from-veggie-500 to-leaf-500 rounded-lg">
               <Leaf className="h-6 w-6 text-white" />
@@ -349,9 +346,9 @@ export default function InventoryApp() {
             </h2>
           </div>
         </SidebarHeader>
-        <SidebarContent>
+        <SidebarContent className="!bg-white">
           <SidebarGroup>
-            <SidebarGroupLabel className="group-data-[state=collapsed]:hidden">Navegación</SidebarGroupLabel>
+            <SidebarGroupLabel className="group-data-[state=collapsed]:hidden text-veggie-700 font-medium">Navegación</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
@@ -408,7 +405,7 @@ export default function InventoryApp() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter className="p-4">
+        <SidebarFooter className="p-4 !bg-white border-t border-veggie-100">
           <p className="text-xs text-veggie-600 group-data-[state=collapsed]:hidden">© 2024 VeggieBurger</p>
         </SidebarFooter>
       </Sidebar>
