@@ -88,7 +88,7 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         sidebar: {
-          background: "hsl(var(--sidebar-background))",
+          background: "var(--sidebar-background-hex)", // Usar la nueva variable para hex
           foreground: "hsl(var(--sidebar-foreground))",
           primary: {
             DEFAULT: "hsl(var(--sidebar-primary))",
